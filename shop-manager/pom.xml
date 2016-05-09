@@ -7,9 +7,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>shop-manager</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <name>shop-manager Maven Webapp</name>
     <url>http://maven.apache.org</url>
+    <modules>
+        <module>../shop-manager-pojo</module>
+        <module>../shop-manager-dao</module>
+        <module>../shop-manager-service</module>
+        <module>../shop-manager-web</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -26,17 +32,6 @@
     </dependencies>
     <build>
         <finalName>shop-manager</finalName>
-        <resources>
-            <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
 
         <plugins>
             <plugin>
