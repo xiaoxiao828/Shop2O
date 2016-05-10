@@ -14,7 +14,7 @@
         <module>../shop-manager-pojo</module>
         <module>../shop-manager-dao</module>
         <module>../shop-manager-service</module>
-        <module>../shop-manager-web</module>
+        <module>../shop-manager-website</module>
     </modules>
     <dependencies>
         <dependency>
@@ -39,16 +39,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- mybatis generator -->
             <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
-                    <verbose>true</verbose>
-                    <overwrite>true</overwrite>
+                    <port>8080</port>
+                    <path>/</path>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>

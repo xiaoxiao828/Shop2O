@@ -22,6 +22,9 @@ import java.util.List;
  * </pre>
  */
 public class PaginationPlugin extends PluginAdapter {
+
+    private static String DEFAULT_PATH = "com.shop.common.Plugin.Page";
+
     @Override
     public boolean modelExampleClassGenerated(TopLevelClass topLevelClass,
                                               IntrospectedTable introspectedTable) {
@@ -49,11 +52,11 @@ public class PaginationPlugin extends PluginAdapter {
     private void addPage(TopLevelClass topLevelClass, IntrospectedTable introspectedTable,
                          String name) {
         topLevelClass.addImportedType(new FullyQualifiedJavaType(
-                "com.quncao.mapi.common.Plugin.Page"));
+                DEFAULT_PATH));
         CommentGenerator commentGenerator = context.getCommentGenerator();
         Field field = new Field();
         field.setVisibility(JavaVisibility.PROTECTED);
-        field.setType(new FullyQualifiedJavaType("com.quncao.mapi.common.Plugin.Page"));
+        field.setType(new FullyQualifiedJavaType(DEFAULT_PATH));
         field.setName(name);
         commentGenerator.addFieldComment(field, introspectedTable);
         topLevelClass.addField(field);
@@ -63,13 +66,13 @@ public class PaginationPlugin extends PluginAdapter {
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setName("set" + camel);
         method.addParameter(new Parameter(new FullyQualifiedJavaType(
-                "com.quncao.mapi.common.Plugin.Page"), name));
+                DEFAULT_PATH), name));
         method.addBodyLine("this." + name + "=" + name + ";");
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
         topLevelClass.addMethod(method);
         method = new Method();
         method.setVisibility(JavaVisibility.PUBLIC);
-        method.setReturnType(new FullyQualifiedJavaType("com.quncao.mapi.common.Plugin.Page"));
+        method.setReturnType(new FullyQualifiedJavaType(DEFAULT_PATH));
         method.setName("get" + camel);
         method.addBodyLine("return " + name + ";");
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
